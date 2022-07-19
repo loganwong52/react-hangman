@@ -1,41 +1,40 @@
 import DisplayWord from './DisplayWord.jsx'
 import WordInput from './WordInput.jsx'
 import IncorrectlyGuessed from './IncorrectlyGuessed.jsx'
-import { useState } from 'react'
 
 function Hangman(props) {
-
     const { puzzle, guessedLetters, setHistory, disabled, setDisabled } = props
 
-
+    // update state
     const updateHistory = (newLetter) => {
         let newHistory = [...guessedLetters, newLetter]
         setHistory(newHistory)
     }
 
+    // event handler
     const handleLetter = () => {
+        // get a single letter from the input text box
         let inputElement = document.getElementById('input-box')
         let letter = inputElement.value[0]
+        if (letter === undefined || letter === " ") {
+            document.getElementById('input-box').value = ""
+            return
+        }
         console.log(letter)
         console.log("history: ", guessedLetters)
+
 
         // check if letter has been guessed yet
         if (guessedLetters.includes(letter)) {
             alert("You've already guessed that letter!")
+            document.getElementById('input-box').value = ""
             return
         }
 
         // otherwise, save the letter to history
         updateHistory(letter)
 
-        // check if letter is in word
-        if (puzzle.toLowerCase().includes(letter)) {
-            console.log("TRUE!")
-        }
-        else {
-            console.log("FALSE!")
-        }
-
+        // Clear the input box so the user can guess again
         document.getElementById('input-box').value = ""
     }
 
@@ -45,9 +44,7 @@ function Hangman(props) {
             <br />
             <WordInput handleLetter={handleLetter} disabled={disabled} />
             <br />
-            {"finished word: " + puzzle}
-            <IncorrectlyGuessed puzzle={puzzle} guessedLetters={guessedLetters} />
-
+            <IncorrectlyGuessed puzzle={puzzle} guessedLetters={guessedLetters} setDisabled={setDisabled} />
         </div>
     )
 }

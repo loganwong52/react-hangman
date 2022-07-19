@@ -1,3 +1,4 @@
+// renders the input text box & submit button
 function WordInput(props) {
     return (
         <div>

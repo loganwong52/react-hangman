@@ -13,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <h1>Hangman!</h1>
+      <h3>Only guess lower case letters!</h3>
       <hr />
       <Hangman puzzle={puzzle} guessedLetters={guessedLetters} setHistory={setHistory} disabled={disabled} setDisabled={setDisabled} />
     </div>
