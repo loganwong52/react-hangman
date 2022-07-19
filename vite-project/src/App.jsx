@@ -8,14 +8,13 @@ function App() {
   // states
   const [puzzle, setPuzzle] = useState(Words.default[randNum])
   const [guessedLetters, setHistory] = useState([])
-
-
+  const [disabled, setDisabled] = useState(false)
 
   return (
     <div className="App">
       <h1>Hangman!</h1>
       <hr />
-      <Hangman puzzle={puzzle} guessedLetters={guessedLetters} setHistory={setHistory} />
+      <Hangman puzzle={puzzle} guessedLetters={guessedLetters} setHistory={setHistory} disabled={disabled} setDisabled={setDisabled} />
     </div>
   )
 }

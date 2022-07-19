@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 function Hangman(props) {
 
-    const { puzzle, guessedLetters, setHistory } = props
+    const { puzzle, guessedLetters, setHistory, disabled, setDisabled } = props
 
 
     const updateHistory = (newLetter) => {
@@ -41,9 +41,9 @@ function Hangman(props) {
 
     return (
         <div>
-            <DisplayWord puzzle={puzzle} />
+            <DisplayWord puzzle={puzzle} guessedLetters={guessedLetters} setDisabled={setDisabled} />
             <br />
-            <WordInput handleLetter={handleLetter} />
+            <WordInput handleLetter={handleLetter} disabled={disabled} />
             <br />
             {"finished word: " + puzzle}
             <IncorrectlyGuessed puzzle={puzzle} guessedLetters={guessedLetters} />
