@@ -1,31 +1,21 @@
-import { useState } from 'react'
 import './App.css'
+import { useState } from 'react'
 import * as Words from './data/words.json'
+import Hangman from './components/Hangman.jsx'
 
 function App() {
   const randNum = Math.floor(Math.random() * Words.default.length)
+  // states
+  const [puzzle, setPuzzle] = useState(Words.default[randNum])
+  const [guessedLetters, setHistory] = useState([])
 
-  const [word, setWord] = useState(Words.default[randNum])
 
-  // render empty spaces
-  const renderWord = () => {
-    let elements = []
-    for (let i = 0; i < word.length; i++) {
-      elements.push(
-        <span key={i} className="empty-space">{"_  "}</span>
-      )
-    }
-    return elements
-  }
 
   return (
     <div className="App">
       <h1>Hangman!</h1>
       <hr />
-      {renderWord()}
-
-      <br />
-      {word}
+      <Hangman puzzle={puzzle} guessedLetters={guessedLetters} setHistory={setHistory} />
     </div>
   )
 }
