@@ -1,6 +1,6 @@
 // renders 6 incorrectly guessed letters
 function IncorrectlyGuessed(props) {
-    const { puzzle, guessedLetters, setDisabled } = props
+    const { puzzle, guessedLetters } = props
 
     const renderWrongLetters = () => {
         // RELEASE 1: this shouldn't go over 6
@@ -13,11 +13,10 @@ function IncorrectlyGuessed(props) {
                     <li key={i}>{guessedLetters[i]}</li>
                 )
                 wrongCounter += 1
-                if (wrongCounter === 6) {
-                    // disable the submit button
-                    setDisabled(true)
-                    alert("YOU'VE GUESSED 6 WRONG LETTERS! GAME OVER!")
-                    return elements
+                if (wrongCounter > 6) {
+                    alert("YOU'VE ALREADY GUESSED 6 WRONG LETTERS! GAME OVER!")
+                    console.log(wrongCounter)
+                    location.reload()
                 }
             }
 

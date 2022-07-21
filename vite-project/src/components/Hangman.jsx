@@ -3,7 +3,7 @@ import WordInput from './WordInput.jsx'
 import IncorrectlyGuessed from './IncorrectlyGuessed.jsx'
 
 function Hangman(props) {
-    const { puzzle, guessedLetters, setHistory, disabled, setDisabled } = props
+    const { puzzle, guessedLetters, setHistory } = props
 
     // update state
     const updateHistory = (newLetter) => {
@@ -20,8 +20,8 @@ function Hangman(props) {
             document.getElementById('input-box').value = ""
             return
         }
-        console.log(letter)
-        console.log("history: ", guessedLetters)
+        // console.log(letter)
+        // console.log("history: ", guessedLetters)
 
 
         // check if letter has been guessed yet
@@ -40,11 +40,11 @@ function Hangman(props) {
 
     return (
         <div>
-            <DisplayWord puzzle={puzzle} guessedLetters={guessedLetters} setDisabled={setDisabled} />
+            <DisplayWord puzzle={puzzle} guessedLetters={guessedLetters} />
             <br />
-            <WordInput handleLetter={handleLetter} disabled={disabled} />
+            <WordInput handleLetter={handleLetter} />
             <br />
-            <IncorrectlyGuessed puzzle={puzzle} guessedLetters={guessedLetters} setDisabled={setDisabled} />
+            <IncorrectlyGuessed puzzle={puzzle} guessedLetters={guessedLetters} />
         </div>
     )
 }
