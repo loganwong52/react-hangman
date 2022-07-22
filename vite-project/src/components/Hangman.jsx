@@ -1,9 +1,13 @@
 import DisplayWord from './DisplayWord.jsx'
 import WordInput from './WordInput.jsx'
 import IncorrectlyGuessed from './IncorrectlyGuessed.jsx'
+import { useState } from 'react'
+
 
 function Hangman(props) {
     const { puzzle, guessedLetters, setHistory } = props
+
+    const [disabled, setDisabled] = useState(false)
 
     // update state
     const updateHistory = (newLetter) => {
@@ -40,9 +44,9 @@ function Hangman(props) {
 
     return (
         <div>
-            <DisplayWord puzzle={puzzle} guessedLetters={guessedLetters} />
+            <DisplayWord puzzle={puzzle} guessedLetters={guessedLetters} setDisabled={setDisabled} />
             <br />
-            <WordInput handleLetter={handleLetter} />
+            <WordInput handleLetter={handleLetter} disabled={disabled} />
             <br />
             <IncorrectlyGuessed puzzle={puzzle} guessedLetters={guessedLetters} />
         </div>
