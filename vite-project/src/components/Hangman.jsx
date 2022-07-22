@@ -44,6 +44,8 @@ function Hangman(props) {
 
     return (
         <div>
+            {disabled && <h2>YOU WIN!</h2>}
+            <br />
             <DisplayWord puzzle={puzzle} guessedLetters={guessedLetters} setDisabled={setDisabled} />
             <br />
             <WordInput handleLetter={handleLetter} disabled={disabled} />

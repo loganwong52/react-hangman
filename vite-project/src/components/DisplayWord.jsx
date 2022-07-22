@@ -23,7 +23,6 @@ function DisplayWord(props) {
 
         // if all letters have been guessed, disable the button since user has won
         if (counter > 0 && counter === puzzle.length) {
-            // alert("You win!")
             setDisabled(true)
         }
         return elements
